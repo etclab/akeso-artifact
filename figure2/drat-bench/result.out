@@ -1,0 +1,26 @@
+goos: darwin
+goarch: arm64
+pkg: drat/internal/key-manager
+cpu: Apple M4
+BenchmarkKeyRotation/Group-2-10         	   10269	    114841 ns/op	   17040 B/op	     197 allocs/op
+BenchmarkKeyRotation/Group-4-10         	    5334	    229258 ns/op	   34049 B/op	     393 allocs/op
+BenchmarkKeyRotation/Group-8-10         	    2646	    457445 ns/op	   68064 B/op	     785 allocs/op
+BenchmarkKeyRotation/Group-16-10        	    1321	    916097 ns/op	  136096 B/op	    1569 allocs/op
+BenchmarkKeyRotation/Group-32-10        	     662	   1837193 ns/op	  272160 B/op	    3137 allocs/op
+BenchmarkKeyRotation/Group-64-10        	     326	   3661103 ns/op	  544289 B/op	    6273 allocs/op
+BenchmarkKeyRotation/Group-128-10       	     164	   7348409 ns/op	 1088581 B/op	   12545 allocs/op
+BenchmarkKeyRotation/Group-256-10       	      81	  14653325 ns/op	 2177057 B/op	   25089 allocs/op
+BenchmarkKeyRotation/Group-512-10       	      39	  29403283 ns/op	 4354094 B/op	   50177 allocs/op
+BenchmarkKeyRotation/Group-1024-10      	      19	  60729072 ns/op	 8708158 B/op	  100353 allocs/op
+BenchmarkKeyRotation/Group-2048-10      	       9	 118640611 ns/op	17417002 B/op	  200707 allocs/op
+BenchmarkKeyRotation/Group-4096-10      	       5	 236899308 ns/op	34832768 B/op	  401412 allocs/op
+BenchmarkKeyRotation/Group-8192-10      	       3	 482531500 ns/op	69665301 B/op	  802820 allocs/op
+BenchmarkKeyRotation/Group-16384-10     	       1	1389462917 ns/op	140640880 B/op	 1638407 allocs/op
+BenchmarkKeyRotation/Group-32768-10     	       1	2796727792 ns/op	281281200 B/op	 3276807 allocs/op
+BenchmarkKeyRotation/Group-65536-10     	       1	5683757834 ns/op	562561776 B/op	 6553608 allocs/op
+BenchmarkKeyRotation/Group-131072-10    	       1	11190329459 ns/op	1125122864 B/op	13107209 allocs/op
+BenchmarkKeyRotation/Group-262144-10    	       1	22310493583 ns/op	2250244304 B/op	26214403 allocs/op
+BenchmarkKeyRotation/Group-524288-10    	       1	45373973750 ns/op	4500488688 B/op	52428806 allocs/op
+BenchmarkKeyRotation/Group-1048576-10   	       1	90647078541 ns/op	9000977056 B/op	104857607 allocs/op
+PASS
+ok  	drat/internal/key-manager	205.271s

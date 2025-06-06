@@ -1,0 +1,48 @@
+go test ./internal/key-manager -v -bench=. -benchmem
+goos: linux
+goarch: amd64
+pkg: drat/internal/key-manager
+cpu: INTEL(R) XEON(R) GOLD 5512U
+BenchmarkKeyRotation
+BenchmarkKeyRotation/Group-2
+BenchmarkKeyRotation/Group-2-56         	    4286	    362522 ns/op	   17296 B/op	     209 allocs/op
+BenchmarkKeyRotation/Group-4
+BenchmarkKeyRotation/Group-4-56         	    1453	    758728 ns/op	   34560 B/op	     417 allocs/op
+BenchmarkKeyRotation/Group-8
+BenchmarkKeyRotation/Group-8-56         	     688	   1690838 ns/op	   69088 B/op	     833 allocs/op
+BenchmarkKeyRotation/Group-16
+BenchmarkKeyRotation/Group-16-56        	     343	   3285833 ns/op	  138144 B/op	    1665 allocs/op
+BenchmarkKeyRotation/Group-32
+BenchmarkKeyRotation/Group-32-56        	     186	   6492881 ns/op	  276256 B/op	    3329 allocs/op
+BenchmarkKeyRotation/Group-64
+BenchmarkKeyRotation/Group-64-56        	      79	  12977957 ns/op	  552480 B/op	    6657 allocs/op
+BenchmarkKeyRotation/Group-128
+BenchmarkKeyRotation/Group-128-56       	      48	  27517995 ns/op	 1104928 B/op	   13313 allocs/op
+BenchmarkKeyRotation/Group-256
+BenchmarkKeyRotation/Group-256-56       	      21	  52812161 ns/op	 2209827 B/op	   26625 allocs/op
+BenchmarkKeyRotation/Group-512
+BenchmarkKeyRotation/Group-512-56       	      10	 107229953 ns/op	 4419633 B/op	   53249 allocs/op
+BenchmarkKeyRotation/Group-1024
+BenchmarkKeyRotation/Group-1024-56      	       5	 230447735 ns/op	 8839212 B/op	  106497 allocs/op
+BenchmarkKeyRotation/Group-2048
+BenchmarkKeyRotation/Group-2048-56      	       2	 508761312 ns/op	17680040 B/op	  212995 allocs/op
+BenchmarkKeyRotation/Group-4096
+BenchmarkKeyRotation/Group-4096-56      	       1	1357227685 ns/op	35691168 B/op	  434190 allocs/op
+BenchmarkKeyRotation/Group-8192
+BenchmarkKeyRotation/Group-8192-56      	       1	2283684800 ns/op	71381816 B/op	  868373 allocs/op
+BenchmarkKeyRotation/Group-16384
+BenchmarkKeyRotation/Group-16384-56     	       1	4176119243 ns/op	142754160 B/op	 1736733 allocs/op
+BenchmarkKeyRotation/Group-32768
+BenchmarkKeyRotation/Group-32768-56     	       1	7612918484 ns/op	285526800 B/op	 3473481 allocs/op
+BenchmarkKeyRotation/Group-65536
+BenchmarkKeyRotation/Group-65536-56     	       1	14252399147 ns/op	570989568 B/op	 6946880 allocs/op
+BenchmarkKeyRotation/Group-131072
+BenchmarkKeyRotation/Group-131072-56    	       1	27548981224 ns/op	1141901360 B/op	13893653 allocs/op
+BenchmarkKeyRotation/Group-262144
+BenchmarkKeyRotation/Group-262144-56    	       1	53678006733 ns/op	2283801504 B/op	27787295 allocs/op
+BenchmarkKeyRotation/Group-524288
+BenchmarkKeyRotation/Group-524288-56    	       1	105694231584 ns/op	4567600800 B/op	55574567 allocs/op
+BenchmarkKeyRotation/Group-1048576
+BenchmarkKeyRotation/Group-1048576-56   	       1	208229611279 ns/op	9135197920 B/op	111149094 allocs/op
+PASS
+ok  	drat/internal/key-manager	451.304s

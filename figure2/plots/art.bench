@@ -1,0 +1,47 @@
+go fmt ./...
+go test -v -bench=. -benchmem
+goos: linux
+goarch: amd64
+pkg: github.com/etclab/art
+cpu: INTEL(R) XEON(R) GOLD 5512U
+BenchmarkUpdate
+BenchmarkUpdate/Update-4
+BenchmarkUpdate/Update-4-56         	    3654	    380084 ns/op	    9488 B/op	     142 allocs/op
+BenchmarkUpdate/Update-8
+BenchmarkUpdate/Update-8-56         	    1794	    560813 ns/op	   12152 B/op	     181 allocs/op
+BenchmarkUpdate/Update-16
+BenchmarkUpdate/Update-16-56        	    1746	    690126 ns/op	   14840 B/op	     220 allocs/op
+BenchmarkUpdate/Update-32
+BenchmarkUpdate/Update-32-56        	    1111	    920650 ns/op	   17504 B/op	     259 allocs/op
+BenchmarkUpdate/Update-64
+BenchmarkUpdate/Update-64-56        	     994	   1032753 ns/op	   20184 B/op	     298 allocs/op
+BenchmarkUpdate/Update-128
+BenchmarkUpdate/Update-128-56       	     886	   1136221 ns/op	   22848 B/op	     337 allocs/op
+BenchmarkUpdate/Update-256
+BenchmarkUpdate/Update-256-56       	     814	   1257253 ns/op	   25528 B/op	     376 allocs/op
+BenchmarkUpdate/Update-512
+BenchmarkUpdate/Update-512-56       	     746	   1557391 ns/op	   28192 B/op	     415 allocs/op
+BenchmarkUpdate/Update-1024
+BenchmarkUpdate/Update-1024-56      	     614	   1646349 ns/op	   30893 B/op	     454 allocs/op
+BenchmarkUpdate/Update-2048
+BenchmarkUpdate/Update-2048-56      	     553	   1891032 ns/op	   33536 B/op	     493 allocs/op
+BenchmarkUpdate/Update-4096
+BenchmarkUpdate/Update-4096-56      	     506	   2128039 ns/op	   36216 B/op	     532 allocs/op
+BenchmarkUpdate/Update-8192
+BenchmarkUpdate/Update-8192-56      	     562	   2065503 ns/op	   38896 B/op	     571 allocs/op
+BenchmarkUpdate/Update-16384
+BenchmarkUpdate/Update-16384-56     	     526	   2087928 ns/op	   41582 B/op	     610 allocs/op
+BenchmarkUpdate/Update-32768
+BenchmarkUpdate/Update-32768-56     	     504	   2147578 ns/op	   44224 B/op	     649 allocs/op
+BenchmarkUpdate/Update-65536
+BenchmarkUpdate/Update-65536-56     	     490	   2192774 ns/op	   46904 B/op	     688 allocs/op
+BenchmarkUpdate/Update-131072
+BenchmarkUpdate/Update-131072-56    	     504	   2313192 ns/op	   49600 B/op	     727 allocs/op
+BenchmarkUpdate/Update-262144
+BenchmarkUpdate/Update-262144-56    	     633	   2397854 ns/op	   52264 B/op	     766 allocs/op
+BenchmarkUpdate/Update-524288
+BenchmarkUpdate/Update-524288-56    	     391	   2572523 ns/op	   54928 B/op	     805 allocs/op
+BenchmarkUpdate/Update-1048576
+BenchmarkUpdate/Update-1048576-56   	     402	   2741243 ns/op	   57592 B/op	     844 allocs/op
+PASS
+ok  	github.com/etclab/art	426.374s

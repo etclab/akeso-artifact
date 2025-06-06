@@ -1,0 +1,36 @@
+#!/usr/bin/env gnuplot
+
+load 'style.gpi'
+
+set terminal pdfcairo
+set output 'fig2.pdf' # Changed output filename
+
+set grid ytics
+set tics nomirror
+set xlabel "Group Size"
+set ylabel "Sender's Latency for a Key Update"
+set key top left
+set logscale x
+set logscale y
+
+set xtics ( \
+        "4"          4, \
+        "100"      100, \
+        "1k"      1000, \
+        "10k"    10000, \
+        "100k"  100000, \
+        "1m"   1000000)
+
+set ytics ( \
+        "0"      0.01, \
+        "1ms"       1, \
+        "10ms"     10, \
+        "100ms"   100, \
+        "1s"     1000, \
+        "10s"   10000, \
+        "1m"    60000)
+
+# Use inline data
+plot 'art.dat'  using 1:($2/1e6) with linespoints linestyle 1 linewidth 4 pointtype 6 title 'ART', \
+     'drat.dat' using 1:($2/1e6) with linespoints linestyle 2 linewidth 4 pointtype 7 title 'Pairwise Double Ratchet'
+

@@ -1,0 +1,4 @@
+[submodule "figure2/art"]
+	path = figure2/art
+	url = https://github.com/etclab/art.git
+	branch = benchmarking

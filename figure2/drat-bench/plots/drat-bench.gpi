@@ -1,0 +1,17 @@
+#!/usr/bin/env gnuplot
+
+load 'plots/style.gpi'
+
+set grid ytics
+set tics nomirror
+set xlabel "Group Size"
+set ylabel "Latency (msec - log)"
+set key off
+set logscale y
+
+# Custom x-tics in order
+set xtics ("1" 0, "8" 3, "64" 6, "512" 9, "4096" 12, "32768" 15, "262144" 18, "1048576" 20)
+
+# Use inline data
+plot '< tail -n +5 result.out | head -n +20' using 0:($3/1e6) with linespoints linestyle 2 linewidth 4 pointtype 7
+
