@@ -46,12 +46,12 @@ for strat in strategies:
             reads += [size/float(x) for x in open(read_file, 'r').read(-1).strip().split("\n")]
             writes += [size/float(x) for x in open(write_file, 'r').read(-1).strip().split("\n")]
                     
-            # discard the first and last 5 values
             reads.sort()
             writes.sort()
             
-            # reads = reads[5:-5]
-            # writes = writes[5:-5]
+            # discard the first and last 1 values
+            reads = reads[1:-1]
+            writes = writes[1:-1]
             
             rs_m = statistics.mean(reads)
             ws_m = statistics.mean(writes)
@@ -111,9 +111,9 @@ for strat in strategies:
             reads.sort()
             writes.sort()
             
-            # discard the first and last 5 values
-            # reads = reads[5:-5]
-            # writes = writes[5:-5]
+            # discard the first and last 1 values
+            reads = reads[1:-1]
+            writes = writes[1:-1]
             
             cmek_datum = cmek_data[f"run-{run}"][f"{size}"]
             
