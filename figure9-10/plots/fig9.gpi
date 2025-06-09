@@ -1,0 +1,53 @@
+#!/usr/bin/env gnuplot
+
+load 'style.gpi'
+set grid ytics
+set tics nomirror
+
+
+set terminal pdfcairo
+set output 'fig9.pdf' 
+
+set style data histogram
+set style histogram gap 3 clustered errorbars
+set style fill solid 1 border -1
+set boxwidth 0.8 relative
+set bars 2
+
+set ylabel "Time to Re-Encrypt Bucket\nRelative to CMEK"
+set xlabel "Bucket Size"
+
+set yrange[0:1.25]
+set ytics ( \
+        "0" 0, \
+        "0.25" 0.25, \
+        "0.50" 0.50, \
+        "0.75" 0.75, \
+        "1.00" 1.00, \
+        "1.25" 1.25, \
+        )
+
+set key outside top center horizontal maxrows 2 Left reverse
+
+# Update these values based on your mean calculations
+cmek_16M_mean    = 2.103
+cmek_128M_mean   = 14.860
+cmek_512M_mean   = 57.430
+cmek_1GB_mean    = 116.532
+cmek_10GB_mean   = 1092.250
+
+# Format times for labels
+set label sprintf("%.3fs", cmek_16M_mean)  at -0.6, 1.05 font ",13" rotate by 15
+set label sprintf("%.3fs", cmek_128M_mean) at 0.4, 1.05 font ",13"  rotate by 15  
+set label sprintf("%.1fs", cmek_512M_mean)   at 1.4, 1.05 font ",13"  rotate by 15
+set label sprintf("%.1fs", cmek_1GB_mean )   at 2.4, 1.05 font ",13"  rotate by 15
+set label sprintf("%.1fs", cmek_10GB_mean)   at 3.4, 1.05 font ",13"  rotate by 15
+
+# Plot with error bars
+plot "time-reencrypt-bucket-hist-vary-bucket-size-w-err.dat" \
+           using 2:3:xtic(1) title "CMEK"             linestyle 1, \
+        "" using 4:5         title "CMEK-HSM"         linestyle 2, \
+        "" using 6:7         title "CSEK"             linestyle 3, \
+        "" using 8:9         title "Akeso-keywrap"    linestyle 4, \
+        "" using 10:11       title "Akeso-strawman"   linestyle 5, \
+        "" using 12:13       title "Akeso"            linestyle 6

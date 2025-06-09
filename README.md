@@ -13,3 +13,11 @@
 - Folder: `figure7`
 - Run benchmark: `./fig7.sh bench`
 - Plot results: `./fig7.sh plot`
+
+### Figure 9: Time to re-encrypt a bucket of varying sizes and Figure 10: Time to re-encrypt a 1G bucket, varying object sizes in the bucket
+- Requirements:
+  - VM to host the `akesod` orchestrator; this can be confidential cloud VM or a trusted local server VM
+- Folder: `figure9-10`
+- Setup benchmark:`./fig9-10.sh setup`
+- Run benchmark:`./fig9-10.sh bench`
+- Plot results:`./fig9-10.sh plot`
