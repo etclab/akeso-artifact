@@ -78,7 +78,7 @@ gcloud kms keys add-iam-policy-binding key2 \
 
 - For Akeso, the following steps are necessary
 ```bash
-# Create a MetadataUpdate Pub/Sub Channel
+# Create a MetadataUpdate Pub/Sub Channel (id doesn't exist already)
 gcloud pubsub topics create MetadataUpdate
 
 # Start the Serverless function

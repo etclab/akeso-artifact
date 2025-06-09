@@ -21,18 +21,21 @@ import (
 const (
 	baseContent                   = "_"
 	fileSizeKB                    = 2 * 1024
-	projectID                     = "ornate-flame-397517"
-	region                        = "us-east1"
-	cloudFunc                     = "encrypt-function-2"
 	requestsPerMinute             = 50
 	sleepDuration                 = time.Second * 60 / requestsPerMinute
-	metadataUpdateTopic           = "np-MetadataUpdate-2"
 	uploadKey                     = "../keys/updatekey"
 	updateKey                     = "../keys/updatekey2"
-	bucketPrefix                  = "fig-10-"
+	bucketPrefix                  = "exp-"
 	akesoLogQueryLookbackDuration = -60 * time.Second // Adjustable lookback duration
 	sizeSeparationDelay           = 2 * time.Minute   // Delay between different size benchmarks
 
+)
+
+var (
+	projectID           = os.Getenv("PROJECT_ID")
+	region              = os.Getenv("REGION")
+	cloudFunc           = os.Getenv("CLOUD_FUNCTION")
+	metadataUpdateTopic = os.Getenv("METADATAUPDATE_TOPIC")
 )
 
 func main() {
@@ -40,7 +43,7 @@ func main() {
 	defer cancel()
 
 	bucketSizes := map[string]int{
-		"16MB": 16 * 1024,
+		"16MB":  16 * 1024,
 		"128MB": 128 * 1024,
 		"512MB": 512 * 1024,
 		"1GB":   1024 * 1024,

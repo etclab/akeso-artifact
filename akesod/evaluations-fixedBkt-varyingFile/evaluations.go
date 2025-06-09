@@ -19,19 +19,22 @@ import (
 )
 
 const (
-	baseContent         = "_"
-	bucketSize          = 1024 * 1024 // in KB
-	projectID           = "ornate-flame-397517"
-	region              = "us-east1"
-	cloudFunc           = "encrypt-object-1"
-	requestsPerMinute   = 50
-	sleepDuration       = time.Second * 60 / requestsPerMinute // This seems unused for log fetching
-	metadataUpdateTopic = "np-MetadataUpdate"
-	uploadKey           = "../keys/updatekey"
-	updateKey           = "../keys/updatekey2"
-	bucketPrefix        = "fig-11-"
+	baseContent       = "_"
+	bucketSize        = 1024 * 1024 // in KB
+	requestsPerMinute = 50
+	sleepDuration     = time.Second * 60 / requestsPerMinute
+	uploadKey         = "../keys/updatekey"
+	updateKey         = "../keys/updatekey2"
+	bucketPrefix      = "fig-11-"
 	// New constant for Akeso log query buffer
 	akesoLogQueryLookbackDuration = -60 * time.Second // Adjustable: e.g., -20s, -30s. Start with a shorter window.
+)
+
+var (
+	projectID           = os.Getenv("PROJECT_ID")
+	region              = os.Getenv("REGION")
+	cloudFunc           = os.Getenv("CLOUD_FUNCTION")
+	metadataUpdateTopic = os.Getenv("METADATAUPDATE_TOPIC")
 )
 
 func main() {
@@ -40,11 +43,10 @@ func main() {
 	defer cancel()
 
 	objectSizes := map[string]int{
-		"128KB": 128,
-		"1MB":   1 * 1024,
-		"2MB":   2 * 1024,
-		"4MB":   4 * 1024,
-		"16MB":  16 * 1024,
+		"1MB":  1 * 1024,
+		"2MB":  2 * 1024,
+		"4MB":  4 * 1024,
+		"16MB": 16 * 1024,
 	}
 
 	strategies := []string{"cmek", "cmek-hsm", "csek", "keywrap", "strawman", "akeso"}
@@ -314,7 +316,7 @@ func BenchmarkReencryptions(objectSizes map[string]int, strategies []string) str
 			akesoEndTimes := make([]int64, numFiles)
 			akesoFoundFiles := 0
 
-			// MODIFICATION POINT 1: Determine log query start time precisely for Akeso
+			// Determine log query start time precisely for Akeso
 			var akesoQueryStartTimeForFilter time.Time
 			if strategy == "akeso" {
 				// This time is captured *before* the loop that executes cloud-cp commands for the current set.
@@ -383,7 +385,7 @@ func BenchmarkReencryptions(objectSizes map[string]int, strategies []string) str
 
 			logQueryLoop:
 				for logRetryCount < maxLogRetries {
-					// MODIFICATION POINT 2: Use the more precise akesoQueryStartTimeForFilter in the log query
+					// Using the more precise akesoQueryStartTimeForFilter in the log query
 					time.Sleep(sleepDuration)
 					fmt.Printf("Akeso: Fetching logs attempt %d/%d (Querying for logs after: %s)\n", logRetryCount+1, maxLogRetries, akesoQueryStartTimeForFilter.Format(time.RFC3339))
 					iter := client.Entries(context.Background(),
@@ -420,7 +422,7 @@ func BenchmarkReencryptions(objectSizes map[string]int, strategies []string) str
 							}
 							fileNameFromLog := parts[3]
 
-							// *** FIX 4: Ensure filename from log matches expected pattern for current sizeKey ***
+							// *** FIX: Ensure filename from log matches expected pattern for current sizeKey ***
 							// This helps filter out logs from other sizes even if the time window overlaps slightly.
 							expectedFilePrefix := fmt.Sprintf("%dKB-", sizeInKB)
 							if !strings.HasPrefix(fileNameFromLog, expectedFilePrefix) {
@@ -511,9 +513,8 @@ func BenchmarkReencryptions(objectSizes map[string]int, strategies []string) str
 							fmt.Printf("  Min Actual Start: %d ns, Max Actual End: %d ns\n", minActualStart, maxActualEnd)
 							fmt.Printf("  Calculated Duration (s): %.6f\n", durationSeconds)
 							sizeReencTimes[strategy] = durationSeconds
-							// MODIFICATION POINT 3: If files are missing due to quota, result should reflect that.
+							// MODIFICATION: If files are missing due to quota, result should reflect that.
 							// The DAT file will show the calculated time, but the console log above indicates if data was partial.
-							// Consider adding a flag or special value to DAT if data is known to be incomplete.
 							// For now, it calculates based on what's found.
 						} else {
 							fmt.Printf("  Error: Akeso Max Actual End time (%d) is not greater than Min Actual Start time (%d) for size %s. Found %d files.\n", maxActualEnd, minActualStart, sizeKey, akesoFoundFiles)

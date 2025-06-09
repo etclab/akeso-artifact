@@ -1,0 +1,6 @@
+# CMEK mean values for gnuplot
+cmek_16M_mean = 2.103
+cmek_128M_mean = 14.860
+cmek_512M_mean = 57.430
+cmek_1GB_mean = 116.532
+cmek_10GB_mean = 1092.250
