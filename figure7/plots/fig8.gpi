@@ -1,0 +1,23 @@
+#!/usr/bin/env gnuplot
+
+load 'style.gpi'
+set grid ytics
+set tics nomirror
+
+set ylabel "CDF"
+set xlabel "Latency (sec)"
+
+set terminal pdfcairo
+set output 'fig8.pdf' # Changed output filename
+
+set key center right
+
+# set xrange [0:4]
+# set xrange[0:]
+
+N_seqread   = system("grep -v '^#' seqread.dat   | wc -l")
+N_seqwrite  = system("grep -v '^#' seqwrite.dat  | wc -l")
+
+# convert bytes to MiB
+plot "seqread.dat"   using 1:(($0+1)/N_seqread)   title "Sequential Read"     with lines linestyle 1 linewidth 4 dashtype '-', \
+     "seqwrite.dat"  using 1:(($0+1)/N_seqwrite)  title "Sequential Write"    with lines linestyle 2 linewidth 4 dashtype '-..'

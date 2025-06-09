@@ -3,4 +3,4 @@
 ./gcsfuse \
     --config-file smh/conf/config.yaml \
     --implicit-dirs \
-   atp-cmek mnt
+    atp-csek mnt

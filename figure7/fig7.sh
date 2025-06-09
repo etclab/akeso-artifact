@@ -17,13 +17,18 @@ for cmd in "$@"; do
     esac
 done
 
-export CMEK_DIR="${SCRIPT_DIR}/cmek"
 export PLOTS_DIR="${SCRIPT_DIR}/plots"
 
 if [[ "$bench" == "true" ]]; then
     echo "---"
     echo "Benchmarking read/write latency"
-
+    
+    $SCRIPT_DIR/cmek/cmek.sh setup_cmek benchmark
+    $SCRIPT_DIR/cmek-hsm/cmek-hsm.sh setup_cmek_hsm benchmark
+    $SCRIPT_DIR/csek/csek.sh setup_csek benchmark
+    $SCRIPT_DIR/keywrap/keywrap.sh setup_keywrap benchmark
+    $SCRIPT_DIR/nested/nested.sh setup_nested benchmark
+    $SCRIPT_DIR/strawman/strawman.sh setup_strawman benchmark
 
     echo "---"
     echo "Done benchmarking read/write latency"
@@ -31,12 +36,12 @@ fi
 
 if [[ "$plot" == "true" ]]; then
     echo "---"
-    echo "Copying data"
-
-    echo "---"
     echo "Transform benchmark data for plotting"
+    python3 format-all-rel-tm.py 
+
+    cd $PLOTS_DIR
 
     echo "---"
     echo "Creating fig7 with gnuplot"
-    # gnuplot fig7.gpi
+    gnuplot fig7.gpi
 fi

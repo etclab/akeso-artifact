@@ -3,10 +3,10 @@
 set -e
 
 PREFIX="atp"
-STRATEGY="cmek"
+STRATEGY="keywrap"
 
-REGION="us-east1"
-ZONE="us-east1-b"
+REGION="us-east4"
+ZONE="us-east4-b"
 
 PROJECT="ornate-flame-397517"
 
@@ -14,20 +14,19 @@ PWD=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 BUCKET_NAME=${PREFIX}-${STRATEGY}
 VM_NAME=${BUCKET_NAME}-vm
-SOFT_KEY="projects/${PROJECT}/locations/${REGION}/keyRings/atp-keyring/cryptoKeys/soft-key"
 
 setup_bucket=false
 setup_vm=false
-setup_cmek=false
+setup_keywrap=false
 benchmark=false
 
-REPO="gcsfuse-cmek"
+REPO="gcsfuse-keywrap"
 
 for cmd in "$@"; do
     case $cmd in
         setup_bucket) setup_bucket=true ;;
-        setup_vm) setup_vm=true ;; 
-        setup_cmek) setup_cmek=true ;; 
+        setup_vm) setup_vm=true ;;
+        setup_keywrap) setup_keywrap=true ;;
         benchmark) benchmark=true ;;
         *) 
             echo "Unknown command: $cmd"
@@ -40,8 +39,7 @@ if [[ "$setup_bucket" == "true" ]]; then
 
     gcloud storage buckets create gs://${BUCKET_NAME} --location=${REGION} \
         --public-access-prevention --soft-delete-duration=0 \
-        --uniform-bucket-level-access \
-        --default-encryption-key=${SOFT_KEY}
+        --uniform-bucket-level-access
 fi
 
 if [[ "$setup_vm" == "true" ]]; then
@@ -52,7 +50,7 @@ if [[ "$setup_vm" == "true" ]]; then
         --zone=${ZONE} --machine-type=n2d-standard-2 --boot-disk-size=20GB
 fi
 
-if [[ "$setup_cmek" == "true" ]]; then
+if [[ "$setup_keywrap" == "true" ]]; then
 
     echo "Cloning gcsfuse repo"
     cd ${PWD}
@@ -60,8 +58,8 @@ if [[ "$setup_cmek" == "true" ]]; then
     if [[ ! -d ${REPO} ]]; then
         git clone https://github.com/etclab/gcsfuse.git ${REPO}
         cd ${REPO}
-        git pull origin cmek
-        git checkout -b cmek
+        git pull origin akeso-keywrap
+        git checkout -b akeso-keywrap
         cd -
 
         echo "Setting up folders and configs"

@@ -1,0 +1,82 @@
+#!/usr/bin/env gnuplot
+
+load 'style.gpi'
+set size 1, 0.5
+set grid ytics
+set tics nomirror
+
+set terminal pdfcairo
+set output 'fig7.pdf' # Changed output filename
+
+#set output 'fsop-latency-hist.eps'
+
+set style data histogram
+set style histogram gap 5 clustered
+# set style histogram errorbars linewidth 1
+set style fill solid 1 border -1
+
+# convert to millisecond
+set ylabel "Latency Relative to CMEK"
+set xlabel "Object Size"
+
+#set logscale y
+set xrange[-1:]
+set yrange[0:2.00]
+
+set ytics ("0" 0, "0.50" 0.50, "1.00" 1, "1.50" 1.50, "2.00" 2.00)
+
+set key font ",12" outside top horizontal maxrows 2 Left reverse
+
+# pattern key
+#set label "Workload"      at screen 0.15, screen 0.39 left font ",12"
+
+set object 1 rect           from screen 0.15, screen 0.56 to screen 0.18, screen 0.59 fc rgb "#444444" fs pattern 3 border lc rgb "#444444"
+set label "Sequential Read"   at screen 0.19, screen 0.575 font ",10"
+
+set object 2 rect           from screen 0.15, screen 0.52 to screen 0.18, screen 0.55 fc rgb "#444444" fs pattern 10 border lc rgb "#444444"
+set label "Sequential Write"  at screen 0.19, screen 0.535 font ",10"
+
+cmek_10K_rs  = 1.0*system("awk 'NR==3 {print $2}' cmek-all-tm.dat")
+cmek_100K_rs = 1.0*system("awk 'NR==4 {print $2}' cmek-all-tm.dat")
+cmek_1M_rs   = 1.0*system("awk 'NR==5 {print $2}' cmek-all-tm.dat")
+cmek_10M_rs  = 1.0*system("awk 'NR==6 {print $2}' cmek-all-tm.dat")
+cmek_100M_rs = 1.0*system("awk 'NR==7 {print $2}' cmek-all-tm.dat")
+
+cmek_10K_ws  = 1.0*system("awk 'NR==3 {print $3}' cmek-all-tm.dat")
+cmek_100K_ws = 1.0*system("awk 'NR==4 {print $3}' cmek-all-tm.dat")
+cmek_1M_ws   = 1.0*system("awk 'NR==5 {print $3}' cmek-all-tm.dat")
+cmek_10M_ws  = 1.0*system("awk 'NR==6 {print $3}' cmek-all-tm.dat")
+cmek_100M_ws = 1.0*system("awk 'NR==7 {print $3}' cmek-all-tm.dat")
+
+set label sprintf("%.3fs", cmek_10K_rs)  at -0.4, 1.15 font ",10" rotate by 15
+set label sprintf("%.3fs", cmek_100K_rs) at 0.6, 1.15 font ",10"  rotate by 15  
+set label sprintf("%.3fs", cmek_1M_rs)   at 1.6, 1.15 font ",10"  rotate by 15
+set label sprintf("%.3fs", cmek_10M_rs)  at 2.6, 1.30 font ",10"  rotate by 15
+set label sprintf("%.3fs", cmek_100M_rs) at 3.6, 1.47 font ",10"  rotate by 15
+
+set label sprintf("%.3fs", cmek_10K_ws)  at 0, 1.15 font ",10"    rotate by 15  
+set label sprintf("%.3fs", cmek_100K_ws) at 1.0, 1.15 font ",10"  rotate by 15
+set label sprintf("%.3fs", cmek_1M_ws)   at 2.0, 1.15 font ",10"  rotate by 15
+set label sprintf("%.3fs", cmek_10M_ws)  at 3.0, 1.30 font ",10"  rotate by 15
+set label sprintf("%.3fs", cmek_100M_ws) at 4.0, 1.47 font ",10"  rotate by 15
+
+cmek_data_file = "cmek-all-tm-rel.dat"
+cmek_hsm_data_file = "cmek-hsm-all-tm-rel.dat"
+csek_data_file = "csek-all-tm-rel.dat"
+keywrap_data_file = "keywrap-all-tm-rel.dat"
+strawman_data_file = "strawman-all-tm-rel.dat"
+nested_data_file = "nested-all-tm-rel.dat"
+
+plot cmek_data_file using 2:xtic(1) title "CMEK"       linestyle 1 fillstyle pattern 3, \
+        cmek_hsm_data_file using 2 title "CMEK-HSM"    linestyle 2 fillstyle pattern 3, \
+        csek_data_file using 2 title "CSEK"        linestyle 3 fillstyle pattern 3, \
+        keywrap_data_file using 2 title "Akeso-keywrap" linestyle 4 fillstyle pattern 3, \
+        strawman_data_file using 2 title "Akeso-strawman" linestyle 5 fillstyle pattern 3, \
+        nested_data_file using 2 title "Akeso"       linestyle 6 fillstyle pattern 3, \
+        \
+        cmek_data_file using 3 notitle                               linestyle 1 fillstyle pattern 10, \
+        cmek_hsm_data_file using 3 notitle       linestyle 2 fillstyle pattern 10, \
+        csek_data_file using 3 notitle           linestyle 3 fillstyle pattern 10, \
+        keywrap_data_file using 3 notitle      linestyle 4 fillstyle pattern 10, \
+        strawman_data_file using 3 notitle     linestyle 5 fillstyle pattern 10, \
+        nested_data_file using 3 notitle          linestyle 6 fillstyle pattern 10

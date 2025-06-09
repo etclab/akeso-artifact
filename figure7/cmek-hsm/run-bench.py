@@ -6,7 +6,7 @@ import os
 import sys
 import random
 
-STRATEGY="cmek"
+STRATEGY="cmek-hsm"
 REPS=50
 
 def make_folder(path):

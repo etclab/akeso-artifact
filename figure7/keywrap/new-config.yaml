@@ -1,0 +1,41 @@
+cache-dir: smh/run/filecache
+
+file-cache:
+    max-size-mb: -1
+    cache-file-for-range-read: true
+
+metadata-cache:
+    ttl-secs: -1
+
+akeso:
+    strategy: keywrap
+    akeso-dir: smh/akeso.d # ensure smh/akeso.d exists
+    project-id: ornate-flame-397517
+
+    setup-topic-id: atp-group-setup
+    setup-sub-id: atp-group-setup-bob
+    update-topic-id: atp-key-update
+    update-sub-id: atp-key-update-bob
+
+    key-file: key
+
+    art: 
+        index: 2
+        member-name: bob
+        group-name: abcd
+
+        # akeso.dir/group-name/member-name/keys
+        initiator-pub-ik-file: initiator-pub-ik.pem
+        member-ek-file: member-ek.pem
+
+        # akeso.dir/group-name/member-name/setup
+        setup-msg-file: setup-msg.json
+        setup-msg-sig-file: setup-msg-sig.json
+        
+        # akeso.dir/group-name/member-name/update
+        update-msg-file: update-msg.json
+        update-msg-sig-file: update-msg-sig.json
+
+        # akeso.dir/group-name/member-name
+        tree-state-file: tree-state.json
+        stage-key-file: stage-key.pem

@@ -2,3 +2,27 @@
 	path = figure2/art
 	url = https://github.com/etclab/art.git
 	branch = benchmarking
+[submodule "figure7/cmek/gcsfuse-cmek"]
+	path = figure7/cmek/gcsfuse-cmek
+	url = https://github.com/etclab/gcsfuse.git
+	branch = cmek
+[submodule "figure7/cmek-hsm/gcsfuse-cmek-hsm"]
+	path = figure7/cmek-hsm/gcsfuse-cmek-hsm
+	url = https://github.com/etclab/gcsfuse.git
+	branch = cmek
+[submodule "figure7/csek/gcsfuse-csek"]
+	path = figure7/csek/gcsfuse-csek
+	url = https://github.com/etclab/gcsfuse.git
+	branch = akeso-csek
+[submodule "figure7/keywrap/gcsfuse-keywrap"]
+	path = figure7/keywrap/gcsfuse-keywrap
+	url = https://github.com/etclab/gcsfuse.git
+	branch = akeso-keywrap
+[submodule "figure7/nested/gcsfuse-nested"]
+	path = figure7/nested/gcsfuse-nested
+	url = https://github.com/etclab/gcsfuse.git
+	branch = akeso-nested
+[submodule "figure7/strawman/gcsfuse-strawman"]
+	path = figure7/strawman/gcsfuse-strawman
+	url = https://github.com/etclab/gcsfuse.git
+	branch = akeso-strawman
