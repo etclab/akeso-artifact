@@ -1,0 +1,46 @@
+cloud:
+  project_id:
+    <PROJECT_ID>
+  bucket:
+    <BUCKET>
+  setup_topic:
+    GroupSetup
+  update_topic:
+    KeyUpdate
+  metadata_update_topic:
+    MetadataUpdate
+  
+art:
+  strategy:
+    akeso
+  setup_required:
+    true
+  outform:
+    pem
+  keytype:
+    ek
+  num_of_members:
+    4
+  config_file:
+    keys/4.conf
+  initiator:
+    akesod
+  priv_IK_file:
+    keys/akesod-ik.pem
+  outdir:
+    keys
+  sigfile:
+    setup.msg.sig
+  msgfile:
+    setup.msg
+  tree_state_file:
+    state.json
+  kdf_salt:
+    HTYU&*%%FVDH#E*JJD
+
+
+akesod:
+  max_reencryptions:
+    50
+  max_concurrent_updates:
+    50

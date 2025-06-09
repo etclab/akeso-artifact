@@ -1,0 +1,4 @@
+- `update_key` message is sent to trigger a key update 
+- the message is sent to `KeyUpdate` topic by default; so all members receive it
+- the message's attribute `messageFor` is used to indicate which member should trigger their key update
+- TODO: send this trigger msg to a specific user subscription instead
