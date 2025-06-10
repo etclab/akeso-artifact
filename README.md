@@ -6,10 +6,10 @@ Here's the list of components that make up Akeso
   ([`gcsfuse@3525748`](https://github.com/etclab/gcsfuse/commit/3525748)) 
   - Implements Akeso’s strategies on top of `gcsfuse` to transparently encrypt 
   and decrypt objects during read and write operations.
-- **art** - [Link](https://github.com/etclab/art)
+- **art** - [Link](https://github.com/etclab/art/commit/3726326)
   - Implements the Asynchronous Ratcheting Tree (ART) data structure and 
   associated protocols
-- **nestedaes** - [Link](https://github.com/etclab/nestedaes)
+- **nestedaes** - [Link](https://github.com/etclab/nestedaes/commit/3da4433)
   - Implements the updatable re-encryption using nested AES
 - **akesod** - [Link](./akesod/)
   - Manages group membership, and generates the re-encryption tokens
