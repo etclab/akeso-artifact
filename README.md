@@ -11,11 +11,13 @@ Here's the list of components that make up Akeso
   associated protocols
 - **nestedaes** - [Link](https://github.com/etclab/nestedaes/commit/3da4433)
   - Implements the updatable re-encryption using nested AES
-- **akesod** - [Link](https://github.com/etclab/akesod/commit/f668e2c)
+- **akesod** - [Link](https://github.com/etclab/akesod/commit/6c5181a)
   - Manages group membership, and generates the re-encryption tokens
-- **akeso-evals** - [Link](https://github.com/etclab/akeso-evals/commit/a454fa6)
+- **akeso-evals** - [Link](https://github.com/etclab/akeso-evals/commit/eb3632a)
   - Includes various utility scripts for parsing data, plotting figures, 
   running pre-evaluation, etc. 
+- **akeso-artifact** - [Link](https://github.com/etclab/akeso-artifact)
+  - Publicly hosted artifact repository for Akeso
 
 - **Build Environment**
   - We developed and tested Akeso and its components on `Ubuntu 24.04 LTS`, but it should work correctly on other systems supported by gcsfuse. (See [this](https://cloud.google.com/storage/docs/cloud-storage-fuse/overview#frameworks-os-architectures) for supported operating systems and architectures)
