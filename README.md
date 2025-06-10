@@ -26,8 +26,8 @@ Here's the list of components that make up Akeso
     ```
 
 ### (Minor) Differences from paper
-- TODO: mine differences from the paper
-
+- Currently, `gcsfuse` does not verify `akesod`’s attestation during the TLS handshake, because akesod may run either on‑premises or in a cloud TEE. However, this validation can be added easily, as prior work cited in Section 4.2 already demonstrates.
+- Additionally, `gcsfuse` clients do not transmit their identity or ephemeral public keys during group creation. For now, we assume that the initiator (`akesod`) and the clients have pre-shared these keys in advance (see Appendix D).
 
 ## Reproducing Experiments
 - The required packages can be installed using the command below (note: please skip `./common/install-go.sh` if you already have `Go` installed - as it'll replace the `Go` on your path, and `./common/install-gcloud.sh` if you already have gcloud cli installed):
