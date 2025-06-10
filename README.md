@@ -11,9 +11,9 @@ Here's the list of components that make up Akeso
   associated protocols
 - **nestedaes** - [Link](https://github.com/etclab/nestedaes/commit/3da4433)
   - Implements the updatable re-encryption using nested AES
-- **akesod** - [Link](./akesod/)
+- **akesod** - [Link](https://github.com/etclab/akesod/commit/f668e2c)
   - Manages group membership, and generates the re-encryption tokens
-- **akeso-evals** - [Link](https://github.com/etclab/akeso-evals)
+- **akeso-evals** - [Link](https://github.com/etclab/akeso-evals/commit/a454fa6)
   - Includes various utility scripts for parsing data, plotting figures, 
   running pre-evaluation, etc. 
 
@@ -22,7 +22,7 @@ Here's the list of components that make up Akeso
   - All components listed above can be run with the following dependencies: `go, gnuplot, fuse3, and python3`. 
   - The required packages can be installed using the command below: 
     ```bash
-    ./common/install-dependencies.sh && ./common/install-go.sh
+    ./common/install-dependencies.sh && ./common/install-go.sh && ./common/install-gcloud.sh && source ~/.bashrc
     ```
 
 ### (Minor) Differences from paper
