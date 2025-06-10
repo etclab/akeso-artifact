@@ -18,7 +18,7 @@ Here's the list of components that make up Akeso
   running pre-evaluation, etc. 
 
 - **Build Environment**
-  - We developed and tested Akeso and its components on Ubuntu 24.04 LTS, but it should work correctly on other systems supported by gcsfuse. (See [this](https://cloud.google.com/storage/docs/cloud-storage-fuse/overview#frameworks-os-architectures) for supported operating systems and architectures)
+  - We developed and tested Akeso and its components on `Ubuntu 24.04 LTS`, but it should work correctly on other systems supported by gcsfuse. (See [this](https://cloud.google.com/storage/docs/cloud-storage-fuse/overview#frameworks-os-architectures) for supported operating systems and architectures)
   - All components listed above can be run with the following dependencies: `go, gnuplot, fuse3, and python3`. 
   - The required packages can be installed using the command below: 
     ```bash
@@ -37,10 +37,19 @@ Here's the list of components that make up Akeso
 
 ### Figure 2: Key update operation using ART vs pairwise Double Ratchet key transport
 - Requirements: `bash`, `python3` and `gnuplot`
-- Folder: `figure2`
-- Run benchmark: `./fig2.sh bench`
-- Plot results: `./fig2.sh plot`
 - Update submodules: `git submodule update --init --remote --recursive`
+- Generating Figure 2
+  ```bash
+  cd figure2
+
+  # run benchmark
+  ./fig2.sh bench
+
+  # plot results
+  ./fig2.sh plot
+
+  # result: figure2/plots/fig2.pdf
+  ```
 
 ### Figure 7: Latency to read/write an entire object using encrypted cloud storage
 - Requirements: 
