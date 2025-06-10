@@ -28,7 +28,7 @@ Here's the list of components that make up Akeso
     ```
 
 ### (Minor) Differences from paper
-- Currently, `gcsfuse` does not verify `akesod`’s attestation during the TLS handshake, because akesod may run either on‑premises or in a cloud TEE. However, this validation can be added easily, as prior work cited in Section 4.2 already demonstrates.
+- Currently, `akesod` doesn't generate attestation and `gcsfuse` clients do not perform attestation verification when they receive the `GroupSetup` message. However, this validation can be added easily, as shown by prior works mentioned in Section 4.2. 
 - Additionally, `gcsfuse` clients do not transmit their identity or ephemeral public keys during group creation. For now, we assume that the initiator (`akesod`) and the clients have pre-shared these keys in advance (see Appendix D).
 
 ## Reproducing Experiments
