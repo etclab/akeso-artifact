@@ -11,6 +11,11 @@ gcloud iam service-accounts create ae-pets25-alice \
   --description="Artifact Evaluator Alice" \
   --display-name="AE Alice PETS25"
 
+# the service account needs access to gs://atp-master
+gcloud storage buckets add-iam-policy-binding gs://atp-master \
+    --member="serviceAccount:ae-pets25-alice@ornate-flame-397517.iam.gserviceaccount.com" \
+    --role="roles/storage.objectUser"
+
 # the service account needs access to gs://atp-csek
 gcloud storage buckets add-iam-policy-binding gs://atp-csek \
     --member="serviceAccount:ae-pets25-alice@ornate-flame-397517.iam.gserviceaccount.com" \

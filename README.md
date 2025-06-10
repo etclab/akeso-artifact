@@ -30,6 +30,10 @@ Here's the list of components that make up Akeso
 
 
 ## Reproducing Experiments
+- The required packages can be installed using the command below (note: please skip `./common/install-go.sh` if you already have `Go` installed - as it'll replace the `Go` on your path, and `./common/install-gcloud.sh` if you already have gcloud cli installed):
+  ```bash
+  ./common/install-dependencies.sh && ./common/install-go.sh && ./common/install-gcloud.sh && source ~/.bashrc
+  ``` 
 
 ### Figure 2: Key update operation using ART vs pairwise Double Ratchet key transport
 - Requirements: `bash`, `python3` and `gnuplot`
@@ -40,12 +44,23 @@ Here's the list of components that make up Akeso
 
 ### Figure 7: Latency to read/write an entire object using encrypted cloud storage
 - Requirements: 
-    - publicly accessible cloud storage bucket
-    - or a restricted service account that users can use to access the buckets
-    - for now the service account only has read/write access to a few buckets
-- Folder: `figure7` (TODO: write a line about what Figure 7 measures or shows)
+    - Local packages: `bash`, `python3`, `Go`, `gnuplot`, `gcloud`
+    - Cloud resources
+      - Cloud Storage buckets hosted in Google cloud
+      - To access the buckets, a service account key file with necessary access to buckets, keys, pub/sub topics and subscriptions is included in the HotCRP
+      - Setup Service Account (SA) credentials to access the cloud resource.
+        ```bash
+        # adjust the service account key path accordingly
+        export GOOGLE_APPLICATION_CREDENTIALS=$HOME/downloads/serviceAccount-ae-pets25-alice.json
+        gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+        ```
+- Folder: `figure7-8`
 - Run benchmark: `./fig7.sh bench`
 - Plot results: `./fig7.sh plot`
+
+### Figure 8: CDF of Latencies to read and write a 10MB object with Akeso
+- Figure 8 is created using data from experiment for Figure 7
+- Plot results: `./fig8.sh plot`
 
 ### Figure 9: Time to re-encrypt a bucket of varying sizes and Figure 10: Time to re-encrypt a 1G bucket, varying object sizes in the bucket
 - Requirements:
@@ -55,6 +70,3 @@ Here's the list of components that make up Akeso
 - Run benchmark:`./fig9-10.sh bench`
 - Plot results:`./fig9-10.sh plot`
 
-### Appendix
-- TODO: where you describe in detail all the permissions required to setup and run your experiments
-- TODO: discuss about the different variants of gcsfuse? maybe in the gcsfuse repo itself?
