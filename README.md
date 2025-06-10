@@ -54,19 +54,45 @@ Here's the list of components that make up Akeso
         export GOOGLE_APPLICATION_CREDENTIALS=$HOME/downloads/serviceAccount-ae-pets25-alice.json
         gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
         ```
-- Folder: `figure7-8`
-- Run benchmark: `./fig7.sh bench`
-- Plot results: `./fig7.sh plot`
+- Generating Figure 7 (only runs each (object size, strategy) combination five times)
+  ```bash
+  cd figure7-8
+
+  # run benchmark
+  ./fig7.sh bench
+
+  # plot results
+  ./fig7.sh plot
+
+  # result: figure7-8/plots/fig7.pdf
+  ```
 
 ### Figure 8: CDF of Latencies to read and write a 10MB object with Akeso
-- Figure 8 is created using data from experiment for Figure 7
-- Plot results: `./fig8.sh plot`
+- Generating Figure 8 (depends on the same data from experiment for Figure 7)
+  ```bash
+  cd figure7-8
+
+  # plot results
+  ./fig8.sh plot
+
+  # result: figure7-8/plots/fig8.pdf
+  ```
 
 ### Figure 9: Time to re-encrypt a bucket of varying sizes and Figure 10: Time to re-encrypt a 1G bucket, varying object sizes in the bucket
 - Requirements:
   - VM to host the `akesod` orchestrator; this can be confidential cloud VM or a trusted local server VM
-- Folder: `figure9-10`
-- Setup benchmark:`./fig9-10.sh setup`
-- Run benchmark:`./fig9-10.sh bench`
-- Plot results:`./fig9-10.sh plot`
+- Generating Figure 9 and 10
+  ```bash
+  cd figure9-10
 
+  # setup benchmark
+  ./fig9-10.sh setup
+
+  # run benchmark
+  ./fig9-10.sh bench
+
+  # plot results
+  ./fig9-10.sh plot
+
+  # results: figure9-10/plots/fig9.pdf, figure9-10/plots/fig10.pdf
+  ```
