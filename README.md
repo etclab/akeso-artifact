@@ -18,7 +18,7 @@ Here's the list of components that make up Akeso
   running pre-evaluation, etc. 
 
 - **Build Environment**
-  - We developed and tested Akeso and its components on Ubuntu 24.04 LTS, but it should work correctly on other systems as long as the required packages are installed. 
+  - We developed and tested Akeso and its components on Ubuntu 24.04 LTS, but it should work correctly on other systems supported by gcsfuse. (See [this](https://cloud.google.com/storage/docs/cloud-storage-fuse/overview#frameworks-os-architectures) for supported operating systems and architectures)
   - All components listed above can be run with the following dependencies: `go, gnuplot, fuse3, and python3`. 
   - The required packages can be installed using the command below: 
     ```bash
