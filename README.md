@@ -53,6 +53,9 @@ Here's the list of components that make up Akeso
   # result: figure2/plots/fig2.pdf
   ```
 
+### Table 5: Monthly cost (USD) of Akeso running on a cloud
+- Here's a [sample breakdown](https://cloud.google.com/products/calculator/estimate-preview/CiRkZjFmYzUyMC0yNjA5LTRmNGQtOTQwOC00MjliNGM1MDEzMTIQAQ==?hl=en) of how the cost for running Akeso in a cloud enclave was calculated using the Google Cloud Pricing Calculator.
+
 ### Figure 7: Latency to read/write an entire object using encrypted cloud storage
 - Requirements: 
     - Local packages: `bash`, `python3`, `Go`, `gnuplot`, `gcloud`
