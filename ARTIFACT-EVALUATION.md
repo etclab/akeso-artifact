@@ -9,12 +9,12 @@ Requested Badge: **Available**
 ## Description
 > A short description of your artifact and how it links to your paper.
 
-The artifact for Akeso is distributed into five repositories all hosted on GitHub. Here's a short description of how each component fit into the designed mentioned in the paper. 
+The artifact for Akeso is distributed into five repositories, all hosted on GitHub. Here's a short description of how each component fits into the design mentioned in the paper. 
 - `art` implements the Asynchronous Ratcheting Tree (ART) data structure used for group key generation
 - `nestedaes` implements the updated re-encryption using nested AES
 - `akesod` runs on the cloud handling group membership as well as re-encryption token generation
 - `gcsfuse` includes the six different encryption strategies used with a cloud storage bucket
-- `akeso-evals` includes various scripts, data and instructions for running the benchmarks 
+- `akeso-evals` includes various scripts, data, and instructions for running the benchmarks 
 - `akeso-artifact` (this repository) brings together the above components into a single repository
 
 ### Security/Privacy Issues and Ethical Concerns (All badges)
