@@ -2,12 +2,11 @@
 
 Paper title: **Akeso: Bringing Post-Compromise Security to Cloud Storage**
 
-Artifacts HotCRP Id: **#31** (not your paper Id, but the artifacts id)
+Artifacts HotCRP Id: **#31** 
 
 Requested Badge: **Available**
 
 ## Description
-> A short description of your artifact and how it links to your paper.
 
 The artifact for Akeso is distributed into five repositories, all hosted on GitHub. Here's a short description of how each component fits into the design mentioned in the paper. 
 - `art` implements the Asynchronous Ratcheting Tree (ART) data structure used for group key generation
@@ -18,9 +17,6 @@ The artifact for Akeso is distributed into five repositories, all hosted on GitH
 - `akeso-artifact` (this repository) brings together the above components into a single repository
 
 ### Security/Privacy Issues and Ethical Concerns (All badges)
-> If your artifact holds any risk to the security or privacy of the reviewer's machine, specify them here, e.g., if your artifact requires a specific security mechanism, like the firewall, ASLR, or another thing, to be disabled for its execution.
-Also, emphasize if your artifact contains malware samples, or something similar, to be analyzed.
-In addition, you should highlight any ethical concerns regarding your artifacts here.
 
 The artifact does not contain any malware samples or pose any risk to the security or privacy of the reviewer's machine. Furthermore, there are no ethical concerns associated with running the artifact.
 
@@ -47,7 +43,6 @@ In the following, describe how to access our artifact and all related and necess
 Afterward, describe how to set up everything and how to verify that everything is set up correctly. 
 
 ### Accessibility (All badges)
->Describe how to access your artifact via persistent sources.
 Valid hosting options are institutional and third-party digital repositories.
 Do not use personal web pages.
 For repositories that evolve over time (e.g., Git Repositories ), specify a specific commit-id or tag to be evaluated.
