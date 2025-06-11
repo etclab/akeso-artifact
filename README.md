@@ -61,7 +61,7 @@ Here's the list of components that make up Akeso
     - Local packages: `bash`, `python3`, `Go`, `gnuplot`, `gcloud`
     - Cloud resources
       - Cloud Storage buckets hosted in Google cloud
-      - To access the buckets, a service account key file with necessary access to buckets, keys, pub/sub topics and subscriptions is included in the HotCRP
+      - To access the buckets, use a service account key file with necessary access to buckets, keys, pub/sub topics and subscriptions.
       - Setup Service Account (SA) credentials to access the cloud resource.
         ```bash
         # adjust the service account key path accordingly
