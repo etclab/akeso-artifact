@@ -9,7 +9,7 @@ Here's the list of components that make up Akeso
 - **art** - [Link](https://github.com/etclab/art/commit/3726326)
   - Implements the Asynchronous Ratcheting Tree (ART) data structure and 
   associated protocols
-- **nestedaes** - [Link](https://github.com/etclab/nestedaes/commit/3da4433)
+- **nestedaes** - [Link](https://github.com/etclab/nestedaes/commit/395b6e7)
   - Implements the updatable re-encryption using nested AES
 - **akesod** - [Link](https://github.com/etclab/akesod/commit/6c5181a)
   - Manages group membership, and generates the re-encryption tokens
