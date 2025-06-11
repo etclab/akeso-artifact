@@ -1,3 +1,7 @@
+[submodule "akesod"]
+	path = akesod
+	url = https://github.com/etclab/akesod.git
+	branch = main
 [submodule "figure2/art"]
 	path = figure2/art
 	url = https://github.com/etclab/art.git

@@ -2,7 +2,12 @@
 
 Akeso daemon to run secure cloud services
 
-Steps to run:
+## Automated Setup to run:
+```bash
+bash setup-akesod.sh
+```
+
+## Manual Steps to run:
 - Generate a config for group members
   ```bash
   echo -e "akesod  keys/akesod-ik-pub.pem   keys/akesod-ek-pub.pem\nbob     keys/bob-ik-pub.pem      keys/bob-ek-pub.pem\ncici    keys/cici-ik-pub.pem     keys/cici-ek-pub.pem\ndave    keys/dave-ik-pub.pem     keys/dave-ek-pub.pem" > keys/4.conf

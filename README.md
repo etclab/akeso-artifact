@@ -3,17 +3,17 @@
 Here's the list of components that make up Akeso
 - **gcsfuse** - [Link](https://github.com/etclab/gcsfuse)
   - Our fork is based on Google's open source Cloud Storage FUSE 
-  ([`gcsfuse@3525748`](https://github.com/etclab/gcsfuse/commit/3525748)) 
+  ([`gcsfuse@3525748`](https://github.com/etclab/gcsfuse/tree/3525748b3567ff1dc5e997599e4bb7feee107459)) 
   - Implements Akeso’s strategies on top of `gcsfuse` to transparently encrypt 
   and decrypt objects during read and write operations.
-- **art** - [Link](https://github.com/etclab/art/commit/3726326)
+- **art** - [Link](https://github.com/etclab/art/tree/3726326cc9638bf671ca1094afd476d860023bf2)
   - Implements the Asynchronous Ratcheting Tree (ART) data structure and 
   associated protocols
-- **nestedaes** - [Link](https://github.com/etclab/nestedaes/commit/395b6e7)
+- **nestedaes** - [Link](https://github.com/etclab/nestedaes/tree/395b6e7f5d1158b87a575ddb09289537a06f18d3)
   - Implements the updatable re-encryption using nested AES
-- **akesod** - [Link](https://github.com/etclab/akesod/commit/6c5181a)
+- **akesod** - [Link](https://github.com/etclab/akesod/tree/5c87457d8bf8fecf37b4c3ed5727d29982b2245d)
   - Manages group membership, and generates the re-encryption tokens
-- **akeso-evals** - [Link](https://github.com/etclab/akeso-evals/commit/eb3632a)
+- **akeso-evals** - [Link](https://github.com/etclab/akeso-evals/tree/eb3632a217c29d690bd82a74701ebbfc9c77de34/tee-proxy)
   - Includes various utility scripts for parsing data, plotting figures, 
   running pre-evaluation, etc. 
 - **akeso-artifact** - [Link](https://github.com/etclab/akeso-artifact)
